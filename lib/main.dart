@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -31,7 +30,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String title = '';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -101,20 +100,22 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SearchBarExample extends StatefulWidget {
-  SearchBarExample({Key key, this.title}) : super(key: key);
+  final String title;
+
+  const SearchBarExample({Key? key, this.title}) : super(key: key);
+
   @override
   _SearchBarExampleState createState() => _SearchBarExampleState();
-  final String title;
 }
 
 class _SearchBarExampleState extends State<SearchBarExample> {
   final TextEditingController _filter = new TextEditingController();
 
-  final dio = new Dio(); // for http requests
+  // for http requests
 
   String _searchText = "";
 
-  List names = new List(); //names we get from the STarWars API
+  List names =  [] ;//names we get from the STarWars API
 
   List filteredNames = new List(); // Names filteed by search text
 
